@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import '../styles/Styles.scss';
 
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
@@ -16,10 +17,7 @@ class Browse extends Component {
         exceptionToDisplay:``
     }
 
-    componentDidMount() {
-
-    }
-
+    
     search = () => {
         axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.showTitle}&page=${this.state.resultPage}`).then((res) => {
             this.setState({
@@ -77,12 +75,12 @@ class Browse extends Component {
     render() {
         const exceptionToRender=this.state.exceptionToDisplay?(<div><p>{this.state.exceptionToDisplay}</p></div>):(null)
         
-        const showList=this.state.movies.length?(this.state.movies.map(movie =>{
+        const showList=this.state.movies?(this.state.movies.map(movie =>{
             return(
                 
                 <div key={movie.imdbID}>
-                    <div>
-                        <Link to={`/${movie.imdbID}`}>
+                    <div id="elem">
+                        <Link to={`/movies/${movie.imdbID}`}>
                             <span>{movie.Title}</span>
                         </Link>                                                                           
                         <img src={movie.Poster} alt=""/>
@@ -91,18 +89,18 @@ class Browse extends Component {
                 </div>
             )
         })):(
-            <div> No movies yet</div>
+            <p>No movies yet</p>
         )
         return (
-            <div>
+            <div id="container">
                 <form>
                     <label htmlFor="showTitle">search your film</label>
                     <input type="text" id="showTitle" onChange={this.changeFilmInput} />
-                    <button onClick={this.searchShow}>Search</button>
+                    <button id="search" onClick={this.searchShow}>Search</button>
                 </form>
                 {showList}
-                <button disabled={!this.state.showSpecified} onClick={this.lastPage}>Previous Page</button>
-                <button disabled={!this.state.showSpecified} onClick={this.nextPage}>Next Page</button>
+                <button id="back" disabled={!this.state.showSpecified} onClick={this.lastPage}>Previous Page</button>
+                <button id="next" disabled={!this.state.showSpecified} onClick={this.nextPage}>Next Page</button>
                 {exceptionToRender}
             </div>
         )

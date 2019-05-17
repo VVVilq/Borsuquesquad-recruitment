@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../../Firebase/firebase'
-
+import '../../styles/Styles.scss';
 
 class LogIn extends Component {
 
@@ -35,7 +35,7 @@ class LogIn extends Component {
     render() {
         const exception = this.state.exception ? (<div><p>{this.state.exception}</p></div>) : null
         return (
-            <div>
+            <div id="registration">
                 <form action="">
                     <label htmlFor="email">pass email:</label>
                     <input type="text" id="email" onChange={this.changeState} />

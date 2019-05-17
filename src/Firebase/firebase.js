@@ -23,6 +23,7 @@ import 'firebase/auth'
     }
 
     logout(){
+      
       return this.auth.signOut()
     }
 
@@ -35,8 +36,8 @@ import 'firebase/auth'
     }
 
     authenticationListener(that) {
-       this.auth.onAuthStateChanged(function (user) {
-
+      this.auth.onAuthStateChanged(function (user) {
+        
         if (user) {
           that.setState(
             {user}

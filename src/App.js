@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import firebase from './Firebase/firebase'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import './App.css';
+import firebase from './Firebase/firebase';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Browse from './components/Browse';
@@ -12,13 +11,11 @@ import Movie from './components/Movie';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {}
-    }
-  }
 
+  state = {
+      user: {}
+  }
+ 
   componentDidMount() {
     this.loggingListener();
   }
@@ -30,6 +27,7 @@ class App extends Component {
 
   signout = () => {
     firebase.logout().then(() => {
+
     })
   }
 
@@ -39,24 +37,26 @@ class App extends Component {
 
   render() {
     const currentNav = this.state.user ? (
-      <div>
+      <div id="navigation-bar">
         <Navbar userLogged={true} signout={this.signout} />
         <Switch>
           <Route exact path='/' component={Browse} />
           <Route path='/about' component={About} />
-          <Route path='/:movie_id' component={Movie} />
+          <Route path='/movies/:movie_id' component={Movie} />
         </Switch>
       </div>) : (
-        <div>
+        <div id="navigation-bar">
           <Navbar userLogged={false} />
           <Route exact path='/' component={LogIn} />
           <Route path='/signup' component={Register} />
         </div>)
 
     return (
-      <BrowserRouter>
-        {currentNav}
-      </BrowserRouter>
+      <div className='container'>
+        <BrowserRouter>
+          {currentNav}
+        </BrowserRouter>
+      </div>
     )
   }
 }

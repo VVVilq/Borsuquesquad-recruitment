@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import firebase from '../../Firebase/firebase'
+import firebase from '../../Firebase/firebase';
+import '../../styles/Styles.scss';
 
 class Register extends Component {
   state = {
@@ -20,14 +21,14 @@ class Register extends Component {
     this.setState({
       exception: null
     })
-    
-    firebase.register(this.state.login, this.state.email, this.state.password).then(()=>{
+
+    firebase.register(this.state.login, this.state.email, this.state.password).then(() => {
       this.props.history.push('/')
     }).catch((e) => {
       this.setState({
         exception: e.message
       })
-    })   
+    })
   }
 
 
@@ -36,7 +37,7 @@ class Register extends Component {
   render() {
     const exception = this.state.exception ? (<div><p>{this.state.exception}</p></div>) : null
     return (
-      <div>
+      <div id="registration">
         <form action="">
           <label htmlFor="login">pass login:</label>
           <input type="text" id="login" onChange={this.changeState} />
