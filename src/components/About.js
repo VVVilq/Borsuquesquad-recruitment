@@ -3,9 +3,6 @@ import React from 'react';
 
 const About = ({ userLogged }) => {
 
-    
-
-
     return (
         <div>
             <p>
