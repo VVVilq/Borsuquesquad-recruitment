@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import '../styles/Styles.scss';
 
-const Navbar = ({ userLogged,signout }) => {
+const Navbar = ({ userLogged, signout }) => {
 
     const currentnavbar = userLogged ? (
         <ul>
@@ -17,11 +18,12 @@ const Navbar = ({ userLogged,signout }) => {
         )
 
     return (
-        <nav>
-            <div>
+        <div>
+            <nav id="navigacja">
                 {currentnavbar}
-            </div>
-        </nav>
+            </nav>
+        </div>
+
     )
 }
 
