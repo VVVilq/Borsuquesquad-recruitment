@@ -5,8 +5,8 @@ const Navbar = ({ userLogged,signout }) => {
 
     const currentnavbar = userLogged ? (
         <ul>
-            <li><NavLink to="/">About</NavLink></li>
-            <li><NavLink to="/browse">Browse Films</NavLink></li>
+            <li><NavLink to="/">Browse</NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
             <button onClick={signout}>Log out</button>
         </ul>
     ) : (

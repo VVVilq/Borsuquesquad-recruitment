@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 
-
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
 class Browse extends Component {
 
@@ -20,8 +21,7 @@ class Browse extends Component {
     }
 
     search = () => {
-        axios.get(`http://www.omdbapi.com/?apikey=7831c1e1&s=${this.state.showTitle}&page=${this.state.resultPage}`).then((res) => {
-            console.log(res)
+        axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.showTitle}&page=${this.state.resultPage}`).then((res) => {
             this.setState({
                 movies: res.data.Search,
                 results: res.data.totalResults
@@ -79,9 +79,12 @@ class Browse extends Component {
         
         const showList=this.state.movies.length?(this.state.movies.map(movie =>{
             return(
+                
                 <div key={movie.imdbID}>
                     <div>
-                        <span>{movie.Title}</span>
+                        <Link to={`/${movie.imdbID}`}>
+                            <span>{movie.Title}</span>
+                        </Link>                                                                           
                         <img src={movie.Poster} alt=""/>
 
                     </div>
@@ -92,7 +95,6 @@ class Browse extends Component {
         )
         return (
             <div>
-                <p>browse</p>
                 <form>
                     <label htmlFor="showTitle">search your film</label>
                     <input type="text" id="showTitle" onChange={this.changeFilmInput} />
