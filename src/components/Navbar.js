@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = ({ userLogged,signout }) => {
 
-
     const currentnavbar = userLogged ? (
         <ul>
             <li><NavLink to="/">About</NavLink></li>

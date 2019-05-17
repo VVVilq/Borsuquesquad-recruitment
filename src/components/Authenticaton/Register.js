@@ -3,9 +3,9 @@ import firebase from '../../Firebase/firebase'
 
 class Register extends Component {
   state = {
-    login: '',
-    password: '',
-    email: '',
+    login: ``,
+    password: ``,
+    email: ``,
     exception: null
   }
 
