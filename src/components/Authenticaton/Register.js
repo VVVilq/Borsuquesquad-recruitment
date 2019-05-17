@@ -21,11 +21,13 @@ class Register extends Component {
       exception: null
     })
     
-    firebase.register(this.state.login, this.state.email, this.state.password).catch((e) => {
+    firebase.register(this.state.login, this.state.email, this.state.password).then(()=>{
+      this.props.history.push('/')
+    }).catch((e) => {
       this.setState({
         exception: e.message
       })
-    })
+    })   
   }
 
 
