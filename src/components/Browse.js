@@ -14,7 +14,8 @@ class Browse extends Component {
         movies: [],
         results: 0,
         showSpecified:false,
-        exceptionToDisplay:``
+        exceptionToDisplay:``,
+        shearchOnSite:``
     }
 
     
@@ -71,14 +72,26 @@ class Browse extends Component {
             showSpecified:false
         })
     }
+    changeSearchInput=(e)=>{
+        this.setState({
+            [e.target.id]: e.target.value,
+        })
+    }
 
     render() {
+        let ids=[]
+        let filterShows = this.state.movies?(this.state.movies.filter((movie)=>{
+            return movie.Title.indexOf(this.state.shearchOnSite) !== -1;
+        })):(null)
         const exceptionToRender=this.state.exceptionToDisplay?(<div><p>{this.state.exceptionToDisplay}</p></div>):(null)
         
-        const showList=this.state.movies?(this.state.movies.map(movie =>{
+        const showList=filterShows?(filterShows.map(movie =>{
+            if(ids.includes(movie.imdbID)){
+                return null
+            }
+            ids.push(movie.imdbID)
             return(
-                
-                <div key={movie.imdbID}>
+                <div key={movie.imdbID}>  
                     <div id="elem">
                         <Link to={`/movies/${movie.imdbID}`}>
                             <span>{movie.Title}</span>
@@ -94,7 +107,9 @@ class Browse extends Component {
         return (
             <div id="container">
                 <form>
-                    <label htmlFor="showTitle">search your film</label>
+                    <label htmlFor="shearchOnSite">search film on your site</label>
+                    <input type="text" id="shearchOnSite" onChange={this.changeSearchInput} />
+                    <label htmlFor="showTitle">search your in web</label>
                     <input type="text" id="showTitle" onChange={this.changeFilmInput} />
                     <button id="search" onClick={this.searchShow}>Search</button>
                 </form>
@@ -108,3 +123,6 @@ class Browse extends Component {
 }
 
 export default Browse;
+
+
+
