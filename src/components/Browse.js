@@ -109,7 +109,7 @@ class Browse extends Component {
                 <form>
                     <label htmlFor="shearchOnSite">search film on your site</label>
                     <input type="text" id="shearchOnSite" onChange={this.changeSearchInput} />
-                    <label htmlFor="showTitle">search your in web</label>
+                    <label htmlFor="showTitle">search your show in the Web</label>
                     <input type="text" id="showTitle" onChange={this.changeFilmInput} />
                     <button id="search" onClick={this.searchShow}>Search</button>
                 </form>
