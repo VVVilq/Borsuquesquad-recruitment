@@ -13,7 +13,7 @@ import Movie from './components/Movie';
 class App extends Component {
 
   state = {
-      user: {}
+      user: null
   }
  
   componentDidMount() {
