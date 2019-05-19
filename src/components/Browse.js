@@ -107,7 +107,7 @@ class Browse extends Component {
         return (
             <div id="container">
                 <form>
-                    <label htmlFor="shearchOnSite">search film on your site</label>
+                    <label htmlFor="shearchOnSite">Filter list</label>
                     <input type="text" id="shearchOnSite" onChange={this.changeSearchInput} />
                     <label htmlFor="showTitle">search your show in the Web</label>
                     <input type="text" id="showTitle" onChange={this.changeFilmInput} />
