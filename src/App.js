@@ -7,6 +7,7 @@ import Browse from './components/Browse';
 import LogIn from './components/Authenticaton/LogIn';
 import Register from './components/Authenticaton/Register';
 import Movie from './components/Movie';
+import PasswordRecovery from './components/Authenticaton/PasswordRecovery';
 
 
 
@@ -49,6 +50,7 @@ class App extends Component {
           <Navbar userLogged={false} />
           <Route exact path='/' component={LogIn} />
           <Route path='/signup' component={Register} />
+          <Route path='/recovery' component={PasswordRecovery} />
         </div>)
 
     return (

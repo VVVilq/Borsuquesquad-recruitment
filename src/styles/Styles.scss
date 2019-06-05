@@ -11,34 +11,36 @@ background-color: #f2f2f2;
 div#registration{
   
   width: 100%;
-  height: 100%;
-  display: inline-block;
-  position: fixed;
-  top:55;
-  
+  height: 100%; 
   border-radius: 5px;
-  padding: 50px;
-  
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   
   label{
-      float: left;
-      width: 25%;
+      
+      width: 100%;
       margin-top: 6px;
       padding: 12px 12px 12px 0;
+      
       
   }
 
   input{
-      float: left;
+    
       margin-top: 6px;
       width: 100%;
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      display: inline-block;
       resize: vertical;
   }
 
   button{
+    
       margin: 16px;      
       background-color: #4CAF50;
       color: white;
@@ -52,7 +54,8 @@ div#registration{
       }               
   }
   
-  p{        
+  p#error{        
+
       color: red;
       display: inline-block;
       width: 100%;

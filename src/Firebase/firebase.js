@@ -35,6 +35,13 @@ import 'firebase/auth'
        })  
     }
 
+    passwordResetEmail(emailAddress){
+      return this.auth.sendPasswordResetEmail(emailAddress).then(function() {
+ 
+      })
+      
+    }
+
     authenticationListener(that) {
       this.auth.onAuthStateChanged(function (user) {
         
