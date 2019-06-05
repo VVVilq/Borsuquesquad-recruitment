@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import firebase from '../../Firebase/firebase'
-import { Link } from 'react-router-dom'
+import firebase from '../../Firebase/firebase';
 import '../../styles/Styles.scss';
 
-class LogIn extends Component {
+class PasswordRecovery extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            message:`Type your email`,
             email: ``,
             password: ``,
             exception: null
@@ -21,36 +21,35 @@ class LogIn extends Component {
         })
     }
 
-    logUserIn = (e) => {
+    sendResetEmail=(e)=>{
         e.preventDefault();
-        this.setState({
-            exception: null
-        })
-        firebase.login(this.state.email, this.state.password).catch((e) => {
+        firebase.passwordResetEmail(this.state.email).then(()=>{
             this.setState({
-                exception: e.message
+                message: `email has been send`
+              })
+        }).catch((e) => {
+            this.setState({
+              exception: e.message
             })
-        })
+          })
     }
 
     render() {
         const exception = this.state.exception ? (<div><p id ="error">{this.state.exception}</p></div>) : null
         return (
             <div id="registration">
+                <p>{this.state.message}</p>
                 <form action="">
                     <label htmlFor="email">Email:</label>
                     <input type="text" id="email" onChange={this.changeState} />
-                    <label htmlFor="password">Password:</label>
-                    <input type="text" id="password" onChange={this.changeState} />
-                    <button onClick={this.logUserIn}>Log In</button>
+                    
+                    <button onClick={this.sendResetEmail}>Send Email</button>
                 </form>
-                <Link to={`/recovery`}>
-                            <span>forgot your password?</span>
-                </Link>
+                
                 {exception}
             </div>
         )
     }
 }
 
-export default LogIn;
+export default PasswordRecovery;
